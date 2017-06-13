@@ -53,10 +53,10 @@
                         <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="services.html">Services</a>
-                    </li>
-                    <li>
-                        <a href="contacts.html">Contact</a>
+                      <a href="RPS.html">RPS</a>
+                  </li>
+                  <li>
+                      <a href="Games.html">Games</a>
                     </li>
                 </ul>
             </div>
@@ -70,16 +70,21 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Title</h1>
-                <p class="lead">Header</p>
-                <ul class="list-unstyled">
-                    <li>Bootstrap v3.3.7</li>
-                    <li>jQuery v1.11.1</li>
+                <h1>Rock Paper Scissors</h1>
                 </ul>
             </div>
         </div>
+        <div class="row">
+          <div class="col-sm-4"><img class="rps-images" id="scissors" src="images\scissors.png"></div>
+          <div class="col-sm-4"><img class="rps-images" id="paper" src="images\paper.png"></div>
+          <div class="col-sm-4"><img class="rps-images" id="rock" src="images\rock.png"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"><img class="rps-images" id="scissorscpu" src="images\scissors.png"></div>
+          <div class="col-sm-4"><img class="rps-images" id="papercpu" src="images\paper.png"></div>
+          <div class="col-sm-4"><img class="rps-images" id="rockcpu" src="images\rock.png"></div>
+        </div>
         <!-- /.row -->
-
     </div>
     <!-- /.container -->
 
@@ -90,7 +95,12 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-console.log("Hello");
+    $(".rps-images").click(function(){
+      $(".rps-images").removeClass("rps-selected");
+      $(this).addClass("rps-selected");
+      var sel=$(this).attr("id");
+      console.log(sel);
+    });
     </script>
 
 </body>
