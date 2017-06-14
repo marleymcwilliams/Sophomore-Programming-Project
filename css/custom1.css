@@ -1,7 +1,7 @@
 body{
   background-color:#fff;
 }
-.rps-images{
+.rps-images,.rps-imagescpu{
   width:545px;
   height:545px;
 }

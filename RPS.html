@@ -80,9 +80,9 @@
           <div class="col-sm-4"><img class="rps-images" id="rock" src="images\rock.png"></div>
         </div>
         <div class="row">
-          <div class="col-sm-4"><img class="rps-images" id="scissorscpu" src="images\scissors.png"></div>
-          <div class="col-sm-4"><img class="rps-images" id="papercpu" src="images\paper.png"></div>
-          <div class="col-sm-4"><img class="rps-images" id="rockcpu" src="images\rock.png"></div>
+          <div class="col-sm-4"><img class="rps-imagescpu" id="scissorscpu" src="images\scissors.png"></div>
+          <div class="col-sm-4"><img class="rps-imagescpu" id="papercpu" src="images\paper.png"></div>
+          <div class="col-sm-4"><img class="rps-imagescpu" id="rockcpu" src="images\rock.png"></div>
         </div>
         <!-- /.row -->
     </div>
@@ -100,7 +100,92 @@
       $(this).addClass("rps-selected");
       var sel=$(this).attr("id");
       console.log(sel);
+      cpupick=cpick();
+      result=verdict(cpupick, sel);
+      console.log(result);
+      userimg=result.user;
+      cpuimg=result.cpu;
+      v=result.verdict;
+      console.log(userimg);
+      $(this).attr("src", "images/"+userimg);
+
+
+
+
     });
+
+function cpick(){
+  var cpick = ["scissorscpu", "papercpu", "rockcpu"];
+  var rand = cpick[Math.floor(Math.random()*cpick.length)];
+  console.log(rand);
+  return rand;
+}
+
+function verdict(cpupick, sel){
+  var result;
+  console.log(cpupick+" "+sel);
+
+    switch(sel){
+    case "paper":
+      switch(cpupick){
+        case "papercpu":
+
+          result = {user:"papercpu.png", cpu:"papercpu.png", verdict:"tie"};
+        break;
+
+        case "scissorscpu":
+          result = {user:"paperred.png", cpu:"scissorsgreen.png", verdict:"lose"};
+        break;
+
+        case "rockcpu":
+          result = {user:"papergreen.png", cpu:"rockred.png", verdict:"win"};
+        break;
+
+    }
+    break;
+
+    case "scissors":
+      switch(cpupick){
+        case "papercpu":
+          result = {user:"scissorsgreen.png", cpu:"paperred.png", verdict:"win"};
+        break;
+
+        case "scissorscpu":
+          result = {user:"scissorscpu.png", cpu:"scissorscpu.png", verdict:"tie"};
+        break;
+
+        case "rockcpu":
+          result = {user:"scissorsred.png", cpu:"rockgreen.png", verdict:"lose"};
+      break;
+
+    }
+    break;
+
+    case "rock":
+      switch(cpupick){
+        case "papercpu":
+          result = {user:"rockred.png", cpu:"rockgreen.png", verdict:"lose"};
+        break;
+
+        case "scissorscpu":
+          result = {user:"rockgreen.png", cpu:"scissorsred.png", verdict:"win"};
+        break;
+
+        case "rockcpu":
+          result = {user:"rockcpu.png", cpu:"rockcpu.png", verdict:"tie"};
+      break;
+
+
+
+    }
+    break;
+
+  }
+console.log(result.user);
+return result;
+}
+
+
     </script>
 
 </body>
