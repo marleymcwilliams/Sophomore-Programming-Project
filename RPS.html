@@ -71,6 +71,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Rock Paper Scissors</h1>
+                <h2>  </h2>
                 </ul>
             </div>
         </div>
@@ -97,7 +98,7 @@
     <script>
     $(".rps-images").click(function(){
       $(".rps-images").removeClass("rps-selected");
-      $(this).addClass("rps-selected");
+     // $(this).addClass("rps-selected");
       var sel=$(this).attr("id");
       console.log(sel);
       cpupick=cpick();
@@ -107,8 +108,21 @@
       cpuimg=result.cpu;
       v=result.verdict;
       console.log(userimg);
+      $( ".rps-images" ).each(function( index ) {
+  			i=$(this).attr("id");
+  			$(this).attr("src", "images/"+i+".png");
+	  });
+      $( ".rps-imagescpu" ).each(function( index ) {
+  			i=$(this).attr("id");
+  			i = i.substring(0, i.length - 3);
+  			$(this).attr("src", "images/"+i+".png");
+	  });
+
       $(this).attr("src", "images/"+userimg);
 
+	  $("#"+cpupick).attr("src", "images/"+cpuimg);
+
+	  $("h2").html("You "+ v);
 
 
 
@@ -130,7 +144,7 @@ function verdict(cpupick, sel){
       switch(cpupick){
         case "papercpu":
 
-          result = {user:"papercpu.png", cpu:"papercpu.png", verdict:"tie"};
+          result = {user:"paperyellow.png", cpu:"paperyellow.png", verdict:"tie"};
         break;
 
         case "scissorscpu":
@@ -151,7 +165,7 @@ function verdict(cpupick, sel){
         break;
 
         case "scissorscpu":
-          result = {user:"scissorscpu.png", cpu:"scissorscpu.png", verdict:"tie"};
+          result = {user:"scissorsyellow.png", cpu:"scissorsyellow.png", verdict:"tie"};
         break;
 
         case "rockcpu":
@@ -164,7 +178,7 @@ function verdict(cpupick, sel){
     case "rock":
       switch(cpupick){
         case "papercpu":
-          result = {user:"rockred.png", cpu:"rockgreen.png", verdict:"lose"};
+          result = {user:"rockred.png", cpu:"papergreen.png", verdict:"lose"};
         break;
 
         case "scissorscpu":
@@ -172,7 +186,7 @@ function verdict(cpupick, sel){
         break;
 
         case "rockcpu":
-          result = {user:"rockcpu.png", cpu:"rockcpu.png", verdict:"tie"};
+          result = {user:"rockyellow.png", cpu:"rockyellow.png", verdict:"tie"};
       break;
 
 
